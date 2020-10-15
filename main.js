@@ -154,3 +154,22 @@ client.on("message", message => {
   }
 });
 
+client.on("message", message => {
+  if (message.content === prefix + "bot") {
+    const bot = new Discord.RichEmbed()
+      .setAuthor(client.user.username, client.user.avatarURL)
+      .setColor("#00000")
+      .addField(
+        "✽ *bot ping** : ",
+        `» ${Date.now() - client.createdTimestamp}` + "ms",
+        true
+      )
+      .addField("**server :red_circle:** :  ", `» ${client.guilds.size}`, true)
+      .addField("**chat :orange_circle:** : ", `» ${client.channels.size} `, true)
+      .addField("**user :yellow_circle:** : ", `» ${client.users.size} `, true)
+      .addField("**bot name :green_circle:** :  ", `» ${client.user.tag} `, true)
+      .addField("**Bot Owner** :  ", `» <@465223393210400768>`, true) //
+      .setImage("")
+      .setFooter(message.author.username, message.client.avatarURL);
+    message.channel.send(bot);
+  }
