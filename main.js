@@ -66,3 +66,41 @@ client.on("message", message => {
   }
 });
 
+client.on("message", message => {
+  let args = message.content.split(" ");
+ if (args[0].toLowerCase() === `${prefix}avatar`) {
+  let member = message.mentions.users.first();
+  if(args[0] && !args[1]) {
+    const emb = new Discord.RichEmbed()
+    .setAuthor(message.author.tag, message.author.avatarURL)
+    .setColor("#51545b")
+    .setTitle("Avatar Link")
+    .setURL(`${message.author.avatarURL}`)
+    .setImage(`${message.author.avatarURL}`)
+.setFooter("Requested by" + message.author.tag, message.author.avatarURL)
+     message.channel.sendEmbed(emb);
+  }
+  if(member) {
+      const embed = new Discord.RichEmbed()
+      .setAuthor(member.tag, member.avatarURL)
+      .setColor("#51545b")
+      .setTitle("Avatar Link")
+      .setURL(`${member.avatarURL}`)
+      .setImage(`${member.avatarURL}`)
+      .setFooter("Requested by" + message.author.tag, message.author.avatarURL);
+     message.channel.sendEmbed(embed);
+     }else if(args[1] && !member) {
+          client.fetchUser(args[1]).then(user => {
+    const embed = new Discord.RichEmbed()
+      .setAuthor(user.tag, user.avatarURL)
+      .setColor("#51545b")
+      .setTitle("Avatar Link")
+      .setURL(`${user.avatarURL}`)
+      .setImage(`${user.avatarURL}`)
+      .setFooter("Requested by" + message.author.tag, message.author.avatarURL);
+     message.channel.sendEmbed(embed);
+  })
+    }
+  }
+});
+
