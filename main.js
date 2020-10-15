@@ -32,3 +32,37 @@ const Discord = require('discord.js');
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
+
+
+
+
+client.on("ready", () => {
+  console.log(`Logged in as ${client.user.tag}!`);
+});
+client.on("message", message => {
+  if (message.content === "1") {
+    message.channel.send("2");
+    message.channel.sendFile("");
+  }
+});
+
+client.on("ready", () => {
+  console.log(`Logged in as ${client.user.tag}!`);
+});
+client.on("message", message => {
+  if (message.content === "1") {
+    message.channel.send("2");
+    message.channel.sendFile("");
+  }
+});
+
+client.on("ready", () => {
+  console.log(`Logged in as ${client.user.tag}!`);
+});
+client.on("message", message => {
+  if (message.content === "1") {
+    message.channel.send("2");
+    message.channel.sendFile("");
+  }
+});
+
